@@ -1,11 +1,13 @@
 # gitget
 
-Clones git repositories into a single folder organized by username and repo name.
+[![Build Status](https://travis-ci.com/moonmeister/gitget.svg?branch=master)](https://travis-ci.com/moonmeister/gitget)
+
+Clones git repositories into a single folder organized by username and repo name. For the Go Gophers out there...this is llike `go get` for all your repositories.
 
 ## Usage
 
 ```bash
-# Usage: `gitget.sh <source_repository> <destination_folder>`
+# Usage: gitget.sh <source_repository> <destination_folder>
 
 # Current valid URLs
 # git://github.com/some-user/my-repo.git
