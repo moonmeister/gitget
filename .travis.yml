@@ -1,8 +1,14 @@
 ---
   sudo: required
+
+  branches:
+    only:
+      - master
   notifications:
     email: true
+
   services:
     - docker
+    
   script:
     - make test
