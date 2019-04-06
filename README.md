@@ -39,7 +39,7 @@ $ export CODE_PATH=~/code
 
 ```bash
 # Setup alias
-$ alias gg=~/code/moonmeister/get-git/getgit.sh
+$ alias gg="$CODE_PATH/code/moonmeister/get-git/getgit.sh"
 
 # Now you can run
 $ gg git://github.com/moonmeister/gitget.git
