@@ -1,6 +1,5 @@
 # gitget
-
-[![Build Status](https://travis-ci.com/moonmeister/gitget.svg?branch=master)](https://travis-ci.com/moonmeister/gitget)
+[![Build Status](https://travis-ci.org/moonmeister/gitget.svg?branch=master)](https://travis-ci.org/moonmeister/gitget)
 
 Clones git repositories into a single folder organized by username and repo name. For the Go Gophers out there...this is llike `go get` for all your repositories.
 
