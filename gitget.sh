@@ -12,13 +12,36 @@ function usage {
   echo ""
   echo "Usage: $0 <source> <destination>" 1>&2;
   echo ""
-  echo "Source: ${source} should be a valid git URL:"
-  echo -e "\t git://github.com/some-user/my-repo.git"
-  echo -e "\t git@github.com:some-user/my-repo.git"
-  echo -e "\t https://github.com/some-user/my-repo.git"
+  echo "Source: must be a valid git URL:"
+  echo -e "\t - git://github.com/some-user/my-repo.git"
+  echo -e "\t - git@github.com:some-user/my-repo.git"
+  echo -e "\t - https://github.com/some-user/my-repo.git"
+  echo ""
+  echo "Destination: must be valid directory path and exist:"
+  echo -e "\t - env var CODE_PATH may be used to provide destination."
+  echo -e "\t - destination path provided explicitly overrides env var."
+
 
   exit "$1"; 
 }
+
+## HELP
+
+while getopts ":h" opt; do
+  case $opt in
+    h)
+      usage 0
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+    # :)
+    #   echo "Option -$OPTARG requires an argument." >&2
+    #   exit 1
+    #   ;;
+  esac
+done
 
 ## PARSE INPUT & RUN GIT
 
@@ -49,7 +72,7 @@ fi
 
 destination="${2:-$CODE_PATH}"
 
-if [ ! -d "$destination" ]; then
+if [ ! -d "${destination}" ]; then
   echo "\"${destination}\" is not a valid Directory"
   usage 1
 fi
