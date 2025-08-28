@@ -71,16 +71,32 @@ if [[ -z "${2}" && -z "${CODE_PATH}" ]]; then
 fi
 
 destination="${2:-$CODE_PATH}"
-
+## Check if destination is a valid directory
 if [ ! -d "${destination}" ]; then
   echo "\"${destination}\" is not a valid Directory"
   usage 1
 fi
 
+# Check if it's already cloned
+ finalDestination="${destination}/${user}/${repo}"
+
+if [ -d "${finalDestination}" ]; then
+  echo "Repository already exists at ${finalDestination}"
+  code "${finalDestination}"
+  exit 1
+fi
 
 # Run git clone
 
+echo 'Cloning...'
 git clone "${source}" "${destination}/${user}/${repo}"
 
+# cd into the new directory
+
+cd "${destination}/${user}/${repo}"
+
+# Open in VSCode
+
+code .
 
 
