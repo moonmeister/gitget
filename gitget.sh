@@ -89,14 +89,17 @@ fi
 # Run git clone
 
 echo 'Cloning...'
-git clone "${source}" "${destination}/${user}/${repo}"
-
-# cd into the new directory
-
-cd "${destination}/${user}/${repo}"
-
-# Open in VSCode
-
-code .
+if git clone "${source}" "${destination}/${user}/${repo}"; then
+  echo "Clone successful! Opening in VS Code..."
+  
+  # cd into the new directory
+  cd "${destination}/${user}/${repo}"
+  
+  # Open in VSCode
+  code .
+else
+  echo "Error: Git clone failed. Can not open repository."
+  exit 1
+fi
 
 
